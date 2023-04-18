@@ -34,7 +34,9 @@ def count_instr_ret_in_block(filename, begin, end):
 
 def count_instr_type(filename, instruction):
     instruction_counter = 0
+    line_counter = 0
     ins_mem_counter = 0
+    line_counter_mem = 0
     cpu_clk = 0
     cpu_clk_mem = 0
 
@@ -46,34 +48,42 @@ def count_instr_type(filename, instruction):
             if row[2].find(instruction) != -1:
                 arguments = get_arguments(row[2])
                 instruction_counter += int(row[3])
+                line_counter += 1
                 cpu_clk += int(row[4])
                 if ("0x" in arguments[0]) | ("0x" in arguments[1]) | ("ptr" in arguments[0]) | ("ptr" in arguments[1]):
                     ins_mem_counter += int(row[3])
+                    line_counter_mem += 1
                     cpu_clk_mem += int(row[4])
 
     # All
-    print(instruction + ": ", end='')
+    print(instruction + " (instruction_retired): ", end='')
     print(instruction_counter)
+    print("Ile było tego rodzaju instrukcji: ", end='')
+    print(line_counter)
     print("CPU_CLK: ", end='')
     print(cpu_clk)
     print()
     # memory
-    print("memory: ", end='')
+    print("memory (instruction_retired): ", end='')
     print(ins_mem_counter)
+    print("Ile było tego rodzaju instrukcji: ", end='')
+    print(line_counter_mem)
     print("CPU_CLK (memory): ", end='')
     print(cpu_clk_mem)
     print()
     # register to register
-    print("register to register: ", end='')
+    print("register to register (instruction_retired): ", end='')
     print(instruction_counter - ins_mem_counter)
+    print("Ile było tego rodzaju instrukcji: ", end='')
+    print(line_counter - line_counter_mem)
     print("CPU_CLK (register): ", end='')
     print(cpu_clk - cpu_clk_mem)
 
 
 if __name__ == '__main__':
-    name = "resultdiscord.csv"
+    name = "result7zipnowe.csv"
 
     count_instr_type(name, 'mov')
     print()
-    print("Instruction retired (Block 4): ", end='')
-    print(count_instr_ret_in_block(name, "Block 4", "Block 5"))
+    print("Instruction retired (Block 1): ", end='')
+    print(count_instr_ret_in_block(name, "Block 1:", "Block 2:"))
