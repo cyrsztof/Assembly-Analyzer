@@ -16,9 +16,27 @@ def print_rows(filename):
             print(', '.join(row))
 
 
+def count_instr_ret_in_block(filename, begin, end):
+    counter = 0
+    read_row = False
+    with open(filename, newline='') as csvfile:
+        reader = csv.reader(csvfile, delimiter=',', quotechar='"')
+        next(reader)  # pomija nagłówek pliku
+        for row in reader:
+            if begin in row[2]:
+                read_row = True
+            if end in row[2]:
+                break
+            if read_row:
+                counter += int(row[3])
+        return counter
+
+
 def count_instr_type(filename, instruction):
     instruction_counter = 0
     ins_mem_counter = 0
+    cpu_clk = 0
+    cpu_clk_mem = 0
 
     with open(filename, newline='') as csvfile:
         reader = csv.reader(csvfile, delimiter=',', quotechar='"')
@@ -28,24 +46,34 @@ def count_instr_type(filename, instruction):
             if row[2].find(instruction) != -1:
                 arguments = get_arguments(row[2])
                 instruction_counter += int(row[3])
+                cpu_clk += int(row[4])
                 if ("0x" in arguments[0]) | ("0x" in arguments[1]) | ("ptr" in arguments[0]) | ("ptr" in arguments[1]):
                     ins_mem_counter += int(row[3])
+                    cpu_clk_mem += int(row[4])
 
+    # All
     print(instruction + ": ", end='')
     print(instruction_counter)
+    print("CPU_CLK: ", end='')
+    print(cpu_clk)
+    print()
+    # memory
     print("memory: ", end='')
     print(ins_mem_counter)
+    print("CPU_CLK (memory): ", end='')
+    print(cpu_clk_mem)
+    print()
+    # register to register
     print("register to register: ", end='')
     print(instruction_counter - ins_mem_counter)
+    print("CPU_CLK (register): ", end='')
+    print(cpu_clk - cpu_clk_mem)
 
 
 if __name__ == '__main__':
-    name = "result7zipnowe.csv"
-    # print_rows('result.csv')
+    name = "resultdiscord.csv"
+
     count_instr_type(name, 'mov')
-    #count_instr_type(name, 'add')
-    #count_instr_type(name, 'sub')
-    #count_instr_type(name, 'and')
-    #count_instr_type(name, 'cmp')
-    # print(get_mnemonic("mov qword ptr [rsp+0x30], rbx"))
-    # print(get_arguments("mov qword ptr [rsp+0x30], rbx"))
+    print()
+    print("Instruction retired (Block 4): ", end='')
+    print(count_instr_ret_in_block(name, "Block 4", "Block 5"))
