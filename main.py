@@ -78,12 +78,28 @@ def count_instr_type(filename, instruction):
     print(line_counter - line_counter_mem)
     print("CPU_CLK (register): ", end='')
     print(cpu_clk - cpu_clk_mem)
+    print()
 
 
 if __name__ == '__main__':
     name = "result7zipnowe.csv"
 
     count_instr_type(name, 'mov')
+    count_instr_type(name, 'movzx')
+    count_instr_type(name, 'add')
+    count_instr_type(name, 'sub')
+    count_instr_type(name, 'cmp')
+    count_instr_type(name, 'shl')
+    count_instr_type(name, 'shr')
+    count_instr_type(name, 'imul')
     print()
     print("Instruction retired (Block 1): ", end='')
     print(count_instr_ret_in_block(name, "Block 1:", "Block 2:"))
+    print("Instruction retired (Block 2): ", end='')
+    print(count_instr_ret_in_block(name, "Block 2:", "Block 3:"))
+    print("Instruction retired (Block 3): ", end='')
+    print(count_instr_ret_in_block(name, "Block 3:", "Block 4:"))
+    print("Instruction retired (Block 4): ", end='')
+    print(count_instr_ret_in_block(name, "Block 4:", "Block 5:"))
+    print("Instruction retired (Block 5): ", end='')
+    print(count_instr_ret_in_block(name, "Block 5:", "ret "))
