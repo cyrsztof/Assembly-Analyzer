@@ -1,105 +1,171 @@
 import csv
+import os
+import sys
 
-registers = ["rax", "rbx", "rcx", "rdx", "rsi", "rdi", "rbp", "rsp", "eax", "ebx", "ecx", "edx", "esi", "edi", "ebp",
-             "esp", "r8", "r9", "r10", "r11", "r12", "r13", "r14", "r15"]
+from determine_argument_type import *
+from split_arguments import *
 
+# Initialize variables
+block_count = 0
+block_total_count = {}
+current_block = None
+filename = 'data/input/witcher_merge123.csv'
+found = set()
+instructions = {}
+instruction_argument_count = {}
+instruction_total_count = {}
+invalid_rows = 0
+not_found = set()
+time_argument = {}
+time_total = {}
+base_name = os.path.splitext(os.path.basename(filename))[0]
+output_filename = os.path.join('data/results', f'{base_name}_results.csv')
 
-def get_arguments(instruction):
-    args = instruction.split(", ")
-    return args
+# Open the CSV file
+with open('data/instructions.csv', newline='') as file:
+    reader = csv.reader(file, delimiter=';')
 
+    # Iterate over each row in the CSV file
+    for row in reader:
+        # Check if the row has at least two elements (instruction and description)
+        if len(row) >= 2:
+            instruction = row[0]
+            description = row[1]
 
-def print_rows(filename):
-    with open(filename, newline='') as csvfile:
-        reader = csv.reader(csvfile, delimiter=',', quotechar='"')
-        for row in reader:
-            print(', '.join(row))
+            # Add the instruction and its description to the dictionary
+            instructions[instruction] = description
 
+# Convert keys in the instructions dictionary to lowercase
+instructions = {key.lower(): value for key, value in instructions.items()}
 
-def count_instr_ret_in_block(filename, begin, end):
-    counter = 0
-    read_row = False
-    with open(filename, newline='') as csvfile:
-        reader = csv.reader(csvfile, delimiter=',', quotechar='"')
-        next(reader)  # pomija nagłówek pliku
-        for row in reader:
-            if begin in row[2]:
-                read_row = True
-            if end in row[2]:
-                break
-            if read_row:
-                counter += int(row[3])
-        return counter
+# Open the second CSV file
+with open(filename, newline='') as file:
+    reader = csv.reader(file)
 
+    # Skip the header row
+    next(reader)
 
-def count_instr_type(filename, instruction):
-    instruction_counter = 0
-    line_counter = 0
-    ins_mem_counter = 0
-    line_counter_mem = 0
-    cpu_clk = 0
-    cpu_clk_mem = 0
+    # Count block values first
+    for row in reader:
+        if len(row) >= 4:
+            instruction_with_args = row[2].strip()  # Remove leading/trailing spaces
+            instruction = instruction_with_args.split()[0].lower()  # Extract instruction and convert to lowercase
+            count = row[3]  # Get the count from column 4
 
-    with open(filename, newline='') as csvfile:
-        reader = csv.reader(csvfile, delimiter=',', quotechar='"')
-        next(reader)  # pomija nagłówek pliku
-        for row in reader:
+            # Check if the current row starts a new block
+            if instruction.lower() == 'block':
+                block_count += 1
+                current_block = f"Block {block_count}"
+                block_total_count[current_block] = 0  # Initialize count to 0 for the block
+            else:
+                try:
+                    count = int(count)
 
-            if row[2].find(instruction) != -1:
-                arguments = get_arguments(row[2])
-                instruction_counter += int(row[3])
-                line_counter += 1
-                cpu_clk += int(row[4])
-                if ("0x" in arguments[0]) | ("0x" in arguments[1]) | ("ptr" in arguments[0]) | ("ptr" in arguments[1]):
-                    ins_mem_counter += int(row[3])
-                    line_counter_mem += 1
-                    cpu_clk_mem += int(row[4])
+                    # Increment the total count for the current block
+                    if current_block is not None:
+                        block_total_count[current_block] += count
 
-    # All
-    print(instruction + " (instruction_retired): ", end='')
-    print(instruction_counter)
-    print("Ile było tego rodzaju instrukcji: ", end='')
-    print(line_counter)
-    print("CPU_CLK: ", end='')
-    print(cpu_clk)
-    print()
-    # memory
-    print("memory (instruction_retired): ", end='')
-    print(ins_mem_counter)
-    print("Ile było tego rodzaju instrukcji: ", end='')
-    print(line_counter_mem)
-    print("CPU_CLK (memory): ", end='')
-    print(cpu_clk_mem)
-    print()
-    # register to register
-    print("register to register (instruction_retired): ", end='')
-    print(instruction_counter - ins_mem_counter)
-    print("Ile było tego rodzaju instrukcji: ", end='')
-    print(line_counter - line_counter_mem)
-    print("CPU_CLK (register): ", end='')
-    print(cpu_clk - cpu_clk_mem)
-    print()
+                except ValueError:
+                    invalid_rows += 1
+            # Check if the lowercase instruction is in the lowercase dictionary keys
+            if instruction in instructions:
+                found.add(instruction)
 
+            # Check if the lowercase instruction is not in the lowercase dictionary keys
+            if instruction not in instructions and instruction != 'block':
+                not_found.add(instruction)
 
-if __name__ == '__main__':
-    name = "result7zipnowe.csv"
+    # Reset the reader to the beginning of the file
+    file.seek(0)
+    next(reader)  # Skip the header row again
+    block_count = 0
+    # Update instruction count
+    for row in reader:
+        if len(row) >= 5:
+            instruction_with_args = row[2].strip()  # Remove leading/trailing spaces
+            instruction = instruction_with_args.split()[0].lower()  # Extract the instruction and convert to lowercase
+            count = row[4]  # Get the count from column 5
 
-    count_instr_type(name, 'mov')
-    count_instr_type(name, 'movzx')
-    count_instr_type(name, 'add')
-    count_instr_type(name, 'sub')
-    count_instr_type(name, 'cmp')
-    count_instr_type(name, 'shl')
-    count_instr_type(name, 'shr')
-    count_instr_type(name, 'imul')
-    print()
-    print("Instruction retired (Block 1): ", end='')
-    print(count_instr_ret_in_block(name, "Block 1:", "Block 2:"))
-    print("Instruction retired (Block 2): ", end='')
-    print(count_instr_ret_in_block(name, "Block 2:", "Block 3:"))
-    print("Instruction retired (Block 3): ", end='')
-    print(count_instr_ret_in_block(name, "Block 3:", "Block 4:"))
-    print("Instruction retired (Block 4): ", end='')
-    print(count_instr_ret_in_block(name, "Block 4:", "Block 5:"))
-    print("Instruction retired (Block 5): ", end='')
-    print(count_instr_ret_in_block(name, "Block 5:", "ret "))
+            # Check if the current row starts a new block
+            if instruction.lower() == 'block':
+                block_count += 1
+                current_block = f"Block {block_count}"
+
+            # Check if the instruction is in the dictionary
+            if instruction in instructions:
+                # Initialize the instruction count if it doesn't exist
+                if instruction not in instruction_total_count:
+                    instruction_total_count[instruction] = 0
+                if instruction in instruction_total_count:
+                    instruction_total_count[instruction] += block_total_count[current_block]
+
+                if instruction not in time_total:
+                    time_total[instruction] = 0
+                if instruction in time_total:
+                    try:
+                        count = int(count)
+                        time_total[instruction] += count
+                    except ValueError:
+                        pass
+                # Split the instruction arguments based on commas after the instruction name
+                arguments = split_arguments(instruction_with_args)
+                argument_type = determine_argument_type(arguments)
+
+                # Initialize the instruction count for the argument type if it doesn't exist
+                if argument_type not in instruction_argument_count.get(instruction, {}):
+                    instruction_argument_count.setdefault(instruction, {})[argument_type] = 0
+                if argument_type not in time_argument.get(instruction, {}):
+                    time_argument.setdefault(instruction, {})[argument_type] = 0
+
+                # Increment the instruction count for the argument type
+                instruction_argument_count[instruction][argument_type] += block_total_count[current_block]
+                try:
+                    count = int(count)
+                    time_argument[instruction][argument_type] += count
+                except ValueError:
+                    pass
+
+# Redirect prints to the output file
+with open(output_filename, 'w') as f:
+    sys.stdout = f
+    # Print the instructions found in the dictionary along with their descriptions
+    print("Instructions found:")
+    for instruction in found:
+        print(f"{instruction}: {instructions[instruction]}")
+
+    # Print the instructions not found in the dictionary
+    if len(not_found) > 0:
+        print("\nInstructions not found:")
+        for instruction in not_found:
+            print(instruction)
+
+    print("\nBlock Total Count:")
+    for block, count in block_total_count.items():
+        print(f"{block}: {count}")
+
+    # Print the overall count for each instruction
+    print("\nInstruction Total Count:")
+    for instruction, count in instruction_total_count.items():
+        print(f"{instruction}: {count}")
+
+    # Print the count for each instruction based on argument types
+    print("\nInstruction Argument Count:")
+    for instruction, argument_counts in instruction_argument_count.items():
+        print(instruction)
+        for argument_type, count in argument_counts.items():
+            print(f"- {argument_type}: {count}")
+
+    print("\nInvalid rows: ", invalid_rows)
+
+    print("\nTime Total Count:")
+    for instruction, count in time_total.items():
+        print(f"{instruction}: {count}")
+
+    print("\nTime by Arguments:")
+    for instruction, argument_counts in time_argument.items():
+        print(instruction)
+        for argument_type, count in argument_counts.items():
+            print(f"- {argument_type}: {count}")
+
+# Reset stdout back to the console
+sys.stdout = sys.__stdout__
