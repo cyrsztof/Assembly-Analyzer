@@ -9,11 +9,14 @@ from split_arguments import *
 block_count = 0
 block_total_count = {}
 current_block = None
-filename = 'data/input/witcher_merge123.csv'
+filename = 'data/input/7zip_merged.csv'     # Change this to any file in input directory
 found = set()
 instructions = {}
 instruction_argument_count = {}
 instruction_total_count = {}
+instruction_lines = {}
+instruction_lines_non_zero = {}
+instruction_lines_non_zero_arguments = {}
 invalid_rows = 0
 not_found = set()
 time_argument = {}
@@ -40,17 +43,17 @@ instructions = {key.lower(): value for key, value in instructions.items()}
 
 # Open the second CSV file
 with open(filename, newline='') as file:
-    reader = csv.reader(file)
+    reader = csv.reader(file, delimiter=';')
 
     # Skip the header row
     next(reader)
 
     # Count block values first
     for row in reader:
-        if len(row) >= 4:
-            instruction_with_args = row[2].strip()  # Remove leading/trailing spaces
+        if len(row) >= 3:
+            instruction_with_args = row[1].strip()  # Remove leading/trailing spaces
             instruction = instruction_with_args.split()[0].lower()  # Extract instruction and convert to lowercase
-            count = row[3]  # Get the count from column 4
+            count = row[2]  # Get the count from column 4
 
             # Check if the current row starts a new block
             if instruction.lower() == 'block':
@@ -81,10 +84,10 @@ with open(filename, newline='') as file:
     block_count = 0
     # Update instruction count
     for row in reader:
-        if len(row) >= 5:
-            instruction_with_args = row[2].strip()  # Remove leading/trailing spaces
+        if len(row) >= 4:
+            instruction_with_args = row[1].strip()  # Remove leading/trailing spaces
             instruction = instruction_with_args.split()[0].lower()  # Extract the instruction and convert to lowercase
-            count = row[4]  # Get the count from column 5
+            count = row[3]  # Get the count from column 4
 
             # Check if the current row starts a new block
             if instruction.lower() == 'block':
@@ -96,11 +99,14 @@ with open(filename, newline='') as file:
                 # Initialize the instruction count if it doesn't exist
                 if instruction not in instruction_total_count:
                     instruction_total_count[instruction] = 0
+                    instruction_lines[instruction] = 0
+                    instruction_lines_non_zero[instruction] = 0
                 if instruction in instruction_total_count:
                     instruction_total_count[instruction] += block_total_count[current_block]
 
                 if instruction not in time_total:
                     time_total[instruction] = 0
+
                 if instruction in time_total:
                     try:
                         count = int(count)
@@ -114,11 +120,21 @@ with open(filename, newline='') as file:
                 # Initialize the instruction count for the argument type if it doesn't exist
                 if argument_type not in instruction_argument_count.get(instruction, {}):
                     instruction_argument_count.setdefault(instruction, {})[argument_type] = 0
+                    instruction_lines_non_zero_arguments.setdefault(instruction, {})[argument_type] = 0
                 if argument_type not in time_argument.get(instruction, {}):
                     time_argument.setdefault(instruction, {})[argument_type] = 0
 
                 # Increment the instruction count for the argument type
                 instruction_argument_count[instruction][argument_type] += block_total_count[current_block]
+                instruction_lines[instruction] += 1
+
+                value = row[3]
+                if value.strip().isdigit():
+                    # Increment instruction_lines_non_zero if the value is a non-zero positive number
+                    if int(value) > 0:
+                        instruction_lines_non_zero[instruction] += 1
+                        instruction_lines_non_zero_arguments[instruction][argument_type] += 1
+
                 try:
                     count = int(count)
                     time_argument[instruction][argument_type] += count
@@ -139,9 +155,9 @@ with open(output_filename, 'w') as f:
         for instruction in not_found:
             print(instruction)
 
-    print("\nBlock Total Count:")
-    for block, count in block_total_count.items():
-        print(f"{block}: {count}")
+    #print("\nBlock Total Count:")
+    #for block, count in block_total_count.items():
+    #    print(f"{block}: {count}")
 
     # Print the overall count for each instruction
     print("\nInstruction Total Count:")
@@ -166,6 +182,20 @@ with open(output_filename, 'w') as f:
         print(instruction)
         for argument_type, count in argument_counts.items():
             print(f"- {argument_type}: {count}")
+
+    print("\nInstruction Lines Count:")
+    for instruction, count in instruction_lines.items():
+        print(f"{instruction}: {count}")
+
+    print("\nInstruction Lines Non Zero Count:")
+    for instruction, count in instruction_lines_non_zero.items():
+        print(f"{instruction}: {count}")
+
+    print("\nInstruction Lines Non Zero Count by Arguments:")
+    for instruction, argument_counts in instruction_lines_non_zero_arguments.items():
+        print(instruction)
+        for argument_type, count in argument_counts.items():
+            print(f"-{argument_type}: {count}")
 
 # Reset stdout back to the console
 sys.stdout = sys.__stdout__
