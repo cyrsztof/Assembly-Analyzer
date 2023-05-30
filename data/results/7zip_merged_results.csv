@@ -1,0 +1,1707 @@
+Instructions found:
+jnz: Jump short if not zero (ZF=0)
+adc: Add with Carry
+fxrstor: Restore x87 FPU, MMX, XMM, and MXCSR State
+cmovnbe: Move if not below or equal (CF=0 and ZF=0)
+pushfq: Push EFLAGS Register onto the Stack
+cmovns: Move if not sign (SF=0)
+movsxd: Move with Sign-Extension
+sbb: Integer Subtraction with Borrow
+jns: Jump short if not sign (SF=0)
+prefetchw: Prefetch Data into Caches in Anticipation of a Write
+cdq: Convert Word to Doubleword/Convert Doubleword to Quadword
+fxsave: Save x87 FPU, MMX Technology, and SSE State
+clac: Clear AC Flag in EFLAGS Register
+fiadd: Add
+nop: No Operation
+movups: Move Unaligned Packed Single-Precision Floating-Point Values
+cli: Clear Interrupt Flag
+punpckldq: Unpack Low Data
+jnp: Jump short if not parity (PF=0)
+jnl: Jump short if not less (SF=OF)
+int3: Call to Interrupt Procedure
+movntdq: Store Packed Integers Using Non-Temporal Hint
+xrstors: Restore Processor Extended States Supervisor
+rdrand: Read Random Number
+neg: Two's Complement Negation
+xsaves: Save Processor Extended States Supervisor
+cmovnz: Move if not zero (ZF=0)
+btr: Bit Test and Reset
+pop: Pop a Value from the Stack
+inc: Increment by 1
+movsd: Move Data from String to String
+cmp: Compare Two Operands
+setbe: Set byte if below or equal (CF=1 or ZF=1)
+dec: Decrement by 1
+jnb: Jump short if not below (CF=0)
+pxor: Logical Exclusive OR
+mov: Move
+rep: Repeat String Operation Prefix
+stac: Set AC Flag in EFLAGS Register
+wrmsr: Write to Model Specific Register
+movsx: Move with Sign-Extension
+out: Output to Port
+bswap: Byte Swap
+sti: Set Interrupt Flag
+fimul: Multiply
+or: Logical Inclusive OR
+jnbe: Jump short if not below or equal (CF=0 and ZF=0)
+mul: Unsigned Multiply
+psrldq: Shift Double Quadword Right Logical
+setl: Set byte if less (SF<>OF)
+shl: Shift
+cqo: Convert Word to Doubleword/Convert Doubleword to Quadword
+jmp: Jump
+cmovs: Move if sign (SF=1)
+jbe: Jump near if below or equal (CF=1 or ZF=1)
+not: One's Complement Negation
+rdtscp: Read Time-Stamp Counter and Processor ID
+and: Logical AND
+movdqu: Move Unaligned Packed Integer Values
+ror: Rotate
+div: Unsigned Divide
+ret: Return from Procedure
+fcom: Compare Floating Point Values
+setz: Set byte if zero (ZF=1)
+cmovnle: Move if not less or equal (ZF=0 and SF=OF)
+movdqa: Move Aligned Packed Integer Values
+lfence: Load Fence
+sub: Subtract
+test: Logical Compare
+fstp: Store Floating Point Value
+xsaveopt: Save Processor Extended States Optimized
+paddd: Add Packed Integers
+cmovz: Move if zero (ZF=1)
+cmovbe: Move if below or equal (CF=1 or ZF=1)
+jl: Jump short if less (SF<>OF)
+bts: Bit Test and Set
+push: Push Word, Doubleword or Quadword Onto the Stack
+xrstor: Restore Processor Extended States
+cld: Clear Direction Flag
+bt: Bit Test
+rdtsc: Read Time-Stamp Counter
+movzx: Move with Zero-Extend
+jnle: Jump short if not less or equal (ZF=0 and SF=OF)
+imul: Signed Multiply
+bsr: Bit Scan Reverse
+lock: Assert LOCK# Signal Prefix
+jle: Jump short if less or equal (ZF=1 or SF<>OF)
+rdmsr: Read from Model Specific Register
+cmovle: Move if less or equal (ZF=1 or SF<>OF)
+jz: Jump near if 0 (ZF=1)
+swapgs: Swap GS Base Register
+shr: Shift
+xorps: Bitwise Logical XOR of Packed Single Precision Floating-Point Values
+sfence: Store Fence
+cdqe: Convert Byte to Word/Convert Word to Doubleword/Convert Doubleword to Quadword
+setnbe: Set byte if not below or equal (CF=0 and ZF=0)
+stmxcsr: Store MXCSR Register State
+lea: Load Effective Address
+loopne: Decrement count
+sar: Shift
+js: Jump short if sign (SF=1)
+setnz: Set byte if not zero (ZF=0)
+sahf: Store AH into Flags
+bsf: Bit Scan Forward
+syscall: Fast System Call
+cmovnl: Move if not less (SF=OF)
+xchg: Exchange Register/Memory with Register
+rol: Rotate
+movd: Move Doubleword/Move Quadword
+cmovb: Move if below (CF=1)
+movq: Move Doubleword/Move Quadword
+iretd: Interrupt Return
+iretq: Interrupt Return
+btc: Bit Test and Complement
+setnl: Set byte if not less (SF=OF)
+setle: Set byte if less or equal (ZF=1 or SF<>OF)
+cmovl: Move if less (SF<>OF)
+movaps: Move Aligned Packed Single-Precision Floating-Point Values
+cmovnb: Move if not below (CF=0)
+setb: Set byte if below (CF=1)
+sysret: Return From Fast System Call
+movnti: Store Doubleword Using Non-Temporal Hint
+pause: Spin Loop Hint
+setns: Set byte if not sign (SF=0)
+idiv: Signed Divide
+xsave: Save Processor Extended States
+add: Add
+ldmxcsr: Load MXCSR Register
+xor: Logical Exclusive OR
+fninit: Initialize Floating-Point Unit
+call: Call Procedure
+jb: Jump near if below (CF=1)
+setnb: Set byte if not below (CF=0)
+
+Instructions not found:
+prefetchnta
+data16
+int
+
+Instruction Total Count:
+push: 7044
+sub: 324765
+mov: 2948522
+cmp: 406417
+jnb: 93446
+call: 4426
+add: 101290
+pop: 2921
+ret: 5725
+xor: 236229
+movzx: 554949
+shl: 99474
+or: 92546
+lea: 325406
+cmovnbe: 126383
+cmovb: 55421
+jnz: 111328
+inc: 72518
+jz: 35845
+nop: 135
+jmp: 31437
+test: 21001
+shr: 32601
+jb: 10234
+and: 23392
+imul: 284
+not: 8
+ror: 163
+bsf: 7
+lock: 406
+sar: 7051
+int3: 0
+cmovz: 51
+dec: 11816
+cmovbe: 3
+js: 9
+cmovnz: 1206
+jnbe: 992
+movaps: 2
+xorps: 103
+movups: 178
+movdqa: 1
+movsxd: 68
+neg: 8
+jbe: 521
+bt: 48
+cdqe: 0
+movd: 0
+punpckldq: 0
+paddd: 0
+psrldq: 0
+prefetchw: 19
+adc: 38
+div: 17
+rep: 4
+lfence: 16
+setb: 20
+bts: 9
+sbb: 5
+movsd: 4
+btr: 10
+cmovnb: 4
+jl: 10
+movdqu: 15
+setz: 21
+cmovns: 0
+sti: 38
+movnti: 0
+movntdq: 24
+sfence: 0
+jnl: 1
+cqo: 0
+jle: 1
+xchg: 14
+jnle: 6
+movsx: 8
+cli: 0
+rdtsc: 6
+btc: 1
+bsr: 3
+cmovnl: 4
+setnz: 5
+setnb: 0
+setbe: 0
+jns: 2
+cdq: 0
+setnbe: 15
+rdtscp: 3
+mul: 0
+wrmsr: 0
+swapgs: 0
+cld: 0
+stmxcsr: 0
+ldmxcsr: 0
+clac: 0
+stac: 0
+iretq: 0
+rol: 2
+fiadd: 0
+fstp: 0
+sahf: 0
+idiv: 0
+out: 0
+setl: 2
+cmovnle: 0
+pxor: 0
+rdmsr: 0
+cmovle: 0
+sysret: 0
+iretd: 0
+jnp: 0
+pause: 0
+fcom: 0
+rdrand: 0
+setns: 0
+movq: 0
+pushfq: 4
+cmovl: 0
+fimul: 0
+cmovs: 0
+setle: 1
+bswap: 0
+setnl: 0
+loopne: 0
+syscall: 0
+xsave: 0
+fxsave: 0
+xsaves: 0
+xsaveopt: 0
+fninit: 0
+fxrstor: 0
+xrstors: 1
+xrstor: 0
+
+Instruction Argument Count:
+push
+- Base Registers: 7044
+sub
+- Base Registers with Constant Values: 15542
+- Base Registers: 300594
+- Base Registers with Memory: 8623
+- Memory with constant: 6
+mov
+- Base Registers with Memory: 2321066
+- Base Registers: 519223
+- Base Registers with Constant Values: 93354
+- Memory with constant: 14879
+cmp
+- Base Registers with Constant Values: 9409
+- Base Registers: 230979
+- Base Registers with Memory: 154321
+- Memory with constant: 11708
+jnb
+- Constant Values: 93446
+call
+- Constant Values: 4396
+- Memory: 30
+- Base Registers: 0
+add
+- Base Registers with Constant Values: 22676
+- Base Registers: 68829
+- Base Registers with Memory: 9223
+- Memory with constant: 562
+pop
+- Base Registers: 2921
+ret
+- No Arguments: 5724
+- Constant Values: 1
+xor
+- Base Registers: 214113
+- Base Registers with Memory: 22113
+- Base Registers with Constant Values: 3
+- Memory with constant: 0
+movzx
+- Base Registers with Memory: 428604
+- Base Registers: 126345
+shl
+- Base Registers with Constant Values: 73907
+- Base Registers: 25567
+- Memory with constant: 0
+or
+- Base Registers: 74813
+- Memory with constant: 4
+- Base Registers with Constant Values: 44
+- Base Registers with Memory: 17685
+lea
+- Base Registers with Memory: 325406
+cmovnbe
+- Base Registers: 126368
+- Base Registers with Memory: 15
+cmovb
+- Base Registers with Memory: 50284
+- Base Registers: 5137
+jnz
+- Constant Values: 111328
+inc
+- Base Registers: 44977
+- Memory: 27541
+jz
+- Constant Values: 35845
+nop
+- Base Registers with Memory: 132
+- No Arguments: 3
+jmp
+- Constant Values: 31430
+- Memory: 4
+- Base Registers: 3
+test
+- Base Registers: 20893
+- Base Registers with Constant Values: 67
+- Memory with constant: 41
+- Base Registers with Memory: 0
+shr
+- Base Registers with Constant Values: 18741
+- Base Registers: 13860
+jb
+- Constant Values: 10234
+and
+- Base Registers: 9146
+- Base Registers with Constant Values: 13815
+- Memory with constant: 424
+- Base Registers with Memory: 7
+imul
+- Base Registers: 56
+- Base Registers with Constant Values: 17
+- Base Registers with Memory: 211
+- Memory: 0
+- Other: 0
+not
+- Base Registers: 8
+ror
+- Base Registers: 3
+- Base Registers with Constant Values: 160
+bsf
+- Base Registers: 7
+lock
+- Base Registers with Memory: 271
+- Memory: 61
+- Memory with constant: 74
+sar
+- Base Registers with Constant Values: 7049
+- Base Registers: 2
+int3
+- No Arguments: 0
+cmovz
+- Base Registers: 51
+- Base Registers with Memory: 0
+dec
+- Base Registers: 11799
+- Memory: 17
+cmovbe
+- Base Registers: 3
+js
+- Constant Values: 9
+cmovnz
+- Base Registers: 1206
+- Base Registers with Memory: 0
+jnbe
+- Constant Values: 992
+movaps
+- SIMD Registers with Memory: 2
+xorps
+- SIMD Registers: 103
+movups
+- SIMD Registers with Memory: 178
+movdqa
+- SIMD Registers with Memory: 1
+- SIMD Registers: 0
+movsxd
+- Base Registers: 66
+- Base Registers with Memory: 2
+neg
+- Base Registers: 7
+- Memory: 1
+jbe
+- Constant Values: 521
+bt
+- Base Registers with Constant Values: 40
+- Base Registers: 4
+- Memory with constant: 2
+- Base Registers with Memory: 2
+cdqe
+- No Arguments: 0
+movd
+- SIMD Registers with Memory: 0
+- Other: 0
+punpckldq
+- SIMD Registers: 0
+paddd
+- SIMD Registers: 0
+psrldq
+- SIMD Registers with Constant Values: 0
+prefetchw
+- Memory: 19
+adc
+- Base Registers with Constant Values: 38
+- Base Registers with Memory: 0
+div
+- Memory: 10
+- Base Registers: 7
+rep
+- Memory: 4
+lfence
+- No Arguments: 16
+setb
+- Base Registers: 20
+bts
+- Base Registers with Constant Values: 4
+- Base Registers: 5
+- Memory with constant: 0
+- Base Registers with Memory: 0
+sbb
+- Base Registers: 5
+movsd
+- SIMD Registers with Memory: 4
+btr
+- Base Registers: 1
+- Memory with constant: 1
+- Base Registers with Constant Values: 8
+- Base Registers with Memory: 0
+cmovnb
+- Base Registers: 4
+- Base Registers with Memory: 0
+jl
+- Constant Values: 10
+movdqu
+- SIMD Registers with Memory: 15
+setz
+- Base Registers: 21
+- Memory: 0
+cmovns
+- Base Registers: 0
+sti
+- No Arguments: 38
+movnti
+- Base Registers with Memory: 0
+movntdq
+- SIMD Registers with Memory: 24
+sfence
+- No Arguments: 0
+jnl
+- Constant Values: 1
+cqo
+- No Arguments: 0
+jle
+- Constant Values: 1
+xchg
+- Base Registers with Memory: 14
+- Base Registers: 0
+jnle
+- Constant Values: 6
+movsx
+- Base Registers: 1
+- Base Registers with Memory: 7
+cli
+- No Arguments: 0
+rdtsc
+- No Arguments: 6
+btc
+- Base Registers: 1
+bsr
+- Base Registers: 3
+cmovnl
+- Base Registers: 4
+setnz
+- Base Registers: 5
+- Memory: 0
+setnb
+- Base Registers: 0
+setbe
+- Base Registers: 0
+jns
+- Constant Values: 2
+cdq
+- No Arguments: 0
+setnbe
+- Base Registers: 15
+rdtscp
+- No Arguments: 3
+mul
+- Base Registers: 0
+wrmsr
+- No Arguments: 0
+swapgs
+- No Arguments: 0
+cld
+- No Arguments: 0
+stmxcsr
+- Memory: 0
+ldmxcsr
+- Memory: 0
+clac
+- No Arguments: 0
+stac
+- No Arguments: 0
+iretq
+- No Arguments: 0
+rol
+- Base Registers with Memory: 0
+- Base Registers with Constant Values: 2
+- Memory with constant: 0
+- Base Registers: 0
+fiadd
+- FPU register with Memory: 0
+fstp
+- FPU registers: 0
+sahf
+- No Arguments: 0
+idiv
+- Memory: 0
+- Base Registers: 0
+out
+- Base Registers with Constant Values: 0
+setl
+- Base Registers: 2
+cmovnle
+- Base Registers: 0
+pxor
+- SIMD Registers: 0
+rdmsr
+- No Arguments: 0
+cmovle
+- Base Registers: 0
+sysret
+- No Arguments: 0
+iretd
+- No Arguments: 0
+jnp
+- Constant Values: 0
+pause
+- No Arguments: 0
+fcom
+- FPU registers: 0
+rdrand
+- Base Registers: 0
+setns
+- Base Registers: 0
+- Memory: 0
+movq
+- SIMD Registers with Memory: 0
+- Other: 0
+pushfq
+- No Arguments: 4
+cmovl
+- Base Registers: 0
+fimul
+- FPU register with Memory: 0
+cmovs
+- Base Registers: 0
+setle
+- Base Registers: 1
+bswap
+- Base Registers: 0
+setnl
+- Base Registers: 0
+loopne
+- Constant Values: 0
+syscall
+- No Arguments: 0
+xsave
+- Memory: 0
+fxsave
+- Memory: 0
+xsaves
+- Memory: 0
+xsaveopt
+- Memory: 0
+fninit
+- No Arguments: 0
+fxrstor
+- Memory: 0
+xrstors
+- Memory: 1
+xrstor
+- Memory: 0
+
+Invalid rows:  94528
+
+Time Total Count:
+push: 825
+sub: 4582
+mov: 101773
+cmp: 21815
+jnb: 229
+call: 573
+add: 5533
+pop: 283
+ret: 799
+xor: 3995
+movzx: 16006
+shl: 1089
+or: 1239
+lea: 29100
+cmovnbe: 799
+cmovb: 168
+jnz: 2872
+inc: 12721
+jz: 3314
+nop: 127
+jmp: 2991
+test: 1856
+shr: 637
+jb: 460
+and: 369
+imul: 15
+not: 0
+ror: 0
+bsf: 2
+lock: 24
+sar: 1723
+int3: 0
+cmovz: 1
+dec: 546
+cmovbe: 0
+js: 2
+cmovnz: 28
+jnbe: 8
+movaps: 2
+xorps: 13
+movups: 2
+movdqa: 0
+movsxd: 8
+neg: 2
+jbe: 52
+bt: 7
+cdqe: 1
+movd: 0
+punpckldq: 0
+paddd: 0
+psrldq: 0
+prefetchw: 1
+adc: 2
+div: 1
+rep: 0
+lfence: 0
+setb: 14
+bts: 2
+sbb: 0
+movsd: 0
+btr: 0
+cmovnb: 1
+jl: 2
+movdqu: 0
+setz: 2
+cmovns: 1
+sti: 0
+movnti: 0
+movntdq: 3
+sfence: 0
+jnl: 0
+cqo: 0
+jle: 0
+xchg: 0
+jnle: 1
+movsx: 0
+cli: 5
+rdtsc: 0
+btc: 0
+bsr: 0
+cmovnl: 0
+setnz: 1
+setnb: 0
+setbe: 0
+jns: 0
+cdq: 0
+setnbe: 0
+rdtscp: 0
+mul: 0
+wrmsr: 0
+swapgs: 0
+cld: 0
+stmxcsr: 0
+ldmxcsr: 1
+clac: 0
+stac: 0
+iretq: 0
+rol: 0
+fiadd: 0
+fstp: 0
+sahf: 0
+idiv: 0
+out: 0
+setl: 1
+cmovnle: 0
+pxor: 0
+rdmsr: 0
+cmovle: 0
+sysret: 0
+iretd: 0
+jnp: 0
+pause: 0
+fcom: 0
+rdrand: 0
+setns: 0
+movq: 0
+pushfq: 1
+cmovl: 0
+fimul: 0
+cmovs: 0
+setle: 0
+bswap: 0
+setnl: 0
+loopne: 0
+syscall: 0
+xsave: 0
+fxsave: 0
+xsaves: 0
+xsaveopt: 0
+fninit: 0
+fxrstor: 0
+xrstors: 0
+xrstor: 0
+
+Time by Arguments:
+push
+- Base Registers: 825
+sub
+- Base Registers with Constant Values: 360
+- Base Registers: 3890
+- Base Registers with Memory: 331
+- Memory with constant: 1
+mov
+- Base Registers with Memory: 77906
+- Base Registers: 18620
+- Base Registers with Constant Values: 1081
+- Memory with constant: 4166
+cmp
+- Base Registers with Constant Values: 835
+- Base Registers: 7419
+- Base Registers with Memory: 9967
+- Memory with constant: 3594
+jnb
+- Constant Values: 229
+call
+- Constant Values: 548
+- Memory: 25
+- Base Registers: 0
+add
+- Base Registers with Constant Values: 2766
+- Base Registers: 2240
+- Base Registers with Memory: 483
+- Memory with constant: 44
+pop
+- Base Registers: 283
+ret
+- No Arguments: 799
+- Constant Values: 0
+xor
+- Base Registers: 3985
+- Base Registers with Memory: 10
+- Base Registers with Constant Values: 0
+- Memory with constant: 0
+movzx
+- Base Registers with Memory: 13619
+- Base Registers: 2387
+shl
+- Base Registers with Constant Values: 404
+- Base Registers: 685
+- Memory with constant: 0
+or
+- Base Registers: 661
+- Memory with constant: 0
+- Base Registers with Constant Values: 11
+- Base Registers with Memory: 567
+lea
+- Base Registers with Memory: 29100
+cmovnbe
+- Base Registers: 795
+- Base Registers with Memory: 4
+cmovb
+- Base Registers with Memory: 142
+- Base Registers: 26
+jnz
+- Constant Values: 2872
+inc
+- Base Registers: 10685
+- Memory: 2036
+jz
+- Constant Values: 3314
+nop
+- Base Registers with Memory: 127
+- No Arguments: 0
+jmp
+- Constant Values: 2981
+- Memory: 3
+- Base Registers: 7
+test
+- Base Registers: 1794
+- Base Registers with Constant Values: 29
+- Memory with constant: 33
+- Base Registers with Memory: 0
+shr
+- Base Registers with Constant Values: 192
+- Base Registers: 445
+jb
+- Constant Values: 460
+and
+- Base Registers: 115
+- Base Registers with Constant Values: 236
+- Memory with constant: 18
+- Base Registers with Memory: 0
+imul
+- Base Registers: 2
+- Base Registers with Constant Values: 0
+- Base Registers with Memory: 13
+- Memory: 0
+- Other: 0
+not
+- Base Registers: 0
+ror
+- Base Registers: 0
+- Base Registers with Constant Values: 0
+bsf
+- Base Registers: 2
+lock
+- Base Registers with Memory: 13
+- Memory: 0
+- Memory with constant: 11
+sar
+- Base Registers with Constant Values: 1723
+- Base Registers: 0
+int3
+- No Arguments: 0
+cmovz
+- Base Registers: 1
+- Base Registers with Memory: 0
+dec
+- Base Registers: 546
+- Memory: 0
+cmovbe
+- Base Registers: 0
+js
+- Constant Values: 2
+cmovnz
+- Base Registers: 28
+- Base Registers with Memory: 0
+jnbe
+- Constant Values: 8
+movaps
+- SIMD Registers with Memory: 2
+xorps
+- SIMD Registers: 13
+movups
+- SIMD Registers with Memory: 2
+movdqa
+- SIMD Registers with Memory: 0
+- SIMD Registers: 0
+movsxd
+- Base Registers: 7
+- Base Registers with Memory: 1
+neg
+- Base Registers: 2
+- Memory: 0
+jbe
+- Constant Values: 52
+bt
+- Base Registers with Constant Values: 2
+- Base Registers: 0
+- Memory with constant: 5
+- Base Registers with Memory: 0
+cdqe
+- No Arguments: 1
+movd
+- SIMD Registers with Memory: 0
+- Other: 0
+punpckldq
+- SIMD Registers: 0
+paddd
+- SIMD Registers: 0
+psrldq
+- SIMD Registers with Constant Values: 0
+prefetchw
+- Memory: 1
+adc
+- Base Registers with Constant Values: 2
+- Base Registers with Memory: 0
+div
+- Memory: 0
+- Base Registers: 1
+rep
+- Memory: 0
+lfence
+- No Arguments: 0
+setb
+- Base Registers: 14
+bts
+- Base Registers with Constant Values: 0
+- Base Registers: 2
+- Memory with constant: 0
+- Base Registers with Memory: 0
+sbb
+- Base Registers: 0
+movsd
+- SIMD Registers with Memory: 0
+btr
+- Base Registers: 0
+- Memory with constant: 0
+- Base Registers with Constant Values: 0
+- Base Registers with Memory: 0
+cmovnb
+- Base Registers: 1
+- Base Registers with Memory: 0
+jl
+- Constant Values: 2
+movdqu
+- SIMD Registers with Memory: 0
+setz
+- Base Registers: 2
+- Memory: 0
+cmovns
+- Base Registers: 1
+sti
+- No Arguments: 0
+movnti
+- Base Registers with Memory: 0
+movntdq
+- SIMD Registers with Memory: 3
+sfence
+- No Arguments: 0
+jnl
+- Constant Values: 0
+cqo
+- No Arguments: 0
+jle
+- Constant Values: 0
+xchg
+- Base Registers with Memory: 0
+- Base Registers: 0
+jnle
+- Constant Values: 1
+movsx
+- Base Registers: 0
+- Base Registers with Memory: 0
+cli
+- No Arguments: 5
+rdtsc
+- No Arguments: 0
+btc
+- Base Registers: 0
+bsr
+- Base Registers: 0
+cmovnl
+- Base Registers: 0
+setnz
+- Base Registers: 1
+- Memory: 0
+setnb
+- Base Registers: 0
+setbe
+- Base Registers: 0
+jns
+- Constant Values: 0
+cdq
+- No Arguments: 0
+setnbe
+- Base Registers: 0
+rdtscp
+- No Arguments: 0
+mul
+- Base Registers: 0
+wrmsr
+- No Arguments: 0
+swapgs
+- No Arguments: 0
+cld
+- No Arguments: 0
+stmxcsr
+- Memory: 0
+ldmxcsr
+- Memory: 1
+clac
+- No Arguments: 0
+stac
+- No Arguments: 0
+iretq
+- No Arguments: 0
+rol
+- Base Registers with Memory: 0
+- Base Registers with Constant Values: 0
+- Memory with constant: 0
+- Base Registers: 0
+fiadd
+- FPU register with Memory: 0
+fstp
+- FPU registers: 0
+sahf
+- No Arguments: 0
+idiv
+- Memory: 0
+- Base Registers: 0
+out
+- Base Registers with Constant Values: 0
+setl
+- Base Registers: 1
+cmovnle
+- Base Registers: 0
+pxor
+- SIMD Registers: 0
+rdmsr
+- No Arguments: 0
+cmovle
+- Base Registers: 0
+sysret
+- No Arguments: 0
+iretd
+- No Arguments: 0
+jnp
+- Constant Values: 0
+pause
+- No Arguments: 0
+fcom
+- FPU registers: 0
+rdrand
+- Base Registers: 0
+setns
+- Base Registers: 0
+- Memory: 0
+movq
+- SIMD Registers with Memory: 0
+- Other: 0
+pushfq
+- No Arguments: 1
+cmovl
+- Base Registers: 0
+fimul
+- FPU register with Memory: 0
+cmovs
+- Base Registers: 0
+setle
+- Base Registers: 0
+bswap
+- Base Registers: 0
+setnl
+- Base Registers: 0
+loopne
+- Constant Values: 0
+syscall
+- No Arguments: 0
+xsave
+- Memory: 0
+fxsave
+- Memory: 0
+xsaves
+- Memory: 0
+xsaveopt
+- Memory: 0
+fninit
+- No Arguments: 0
+fxrstor
+- Memory: 0
+xrstors
+- Memory: 0
+xrstor
+- Memory: 0
+
+Instruction Lines Count:
+push: 1510
+sub: 1375
+mov: 35486
+cmp: 6627
+jnb: 783
+call: 4907
+add: 3139
+pop: 1636
+ret: 537
+xor: 2929
+movzx: 3261
+shl: 735
+or: 1028
+lea: 4385
+cmovnbe: 31
+cmovb: 74
+jnz: 5268
+inc: 702
+jz: 5742
+nop: 1077
+jmp: 3758
+test: 7029
+shr: 993
+jb: 879
+and: 2204
+imul: 204
+not: 158
+ror: 266
+bsf: 46
+lock: 717
+sar: 175
+int3: 497
+cmovz: 196
+dec: 315
+cmovbe: 16
+js: 220
+cmovnz: 102
+jnbe: 628
+movaps: 104
+xorps: 165
+movups: 451
+movdqa: 18
+movsxd: 192
+neg: 52
+jbe: 337
+bt: 306
+cdqe: 28
+movd: 19
+punpckldq: 12
+paddd: 10
+psrldq: 7
+prefetchw: 88
+adc: 5
+div: 43
+rep: 6
+lfence: 30
+setb: 12
+bts: 95
+sbb: 24
+movsd: 27
+btr: 63
+cmovnb: 44
+jl: 88
+movdqu: 15
+setz: 44
+cmovns: 13
+sti: 43
+movnti: 4
+movntdq: 12
+sfence: 2
+jnl: 84
+cqo: 2
+jle: 98
+xchg: 60
+jnle: 89
+movsx: 86
+cli: 37
+rdtsc: 16
+btc: 3
+bsr: 55
+cmovnl: 6
+setnz: 49
+setnb: 2
+setbe: 2
+jns: 66
+cdq: 12
+setnbe: 4
+rdtscp: 1
+mul: 25
+wrmsr: 19
+swapgs: 7
+cld: 2
+stmxcsr: 4
+ldmxcsr: 9
+clac: 1
+stac: 4
+iretq: 4
+rol: 37
+fiadd: 1
+fstp: 1
+sahf: 5
+idiv: 3
+out: 1
+setl: 1
+cmovnle: 1
+pxor: 9
+rdmsr: 4
+cmovle: 9
+sysret: 1
+iretd: 2
+jnp: 1
+pause: 10
+fcom: 1
+rdrand: 1
+setns: 2
+movq: 3
+pushfq: 8
+cmovl: 4
+fimul: 1
+cmovs: 1
+setle: 1
+bswap: 17
+setnl: 1
+loopne: 1
+syscall: 2
+xsave: 1
+fxsave: 1
+xsaves: 1
+xsaveopt: 1
+fninit: 1
+fxrstor: 1
+xrstors: 1
+xrstor: 1
+
+Instruction Lines Non Zero Count:
+push: 51
+sub: 70
+mov: 863
+cmp: 201
+jnb: 19
+call: 27
+add: 93
+pop: 19
+ret: 19
+xor: 40
+movzx: 146
+shl: 31
+or: 28
+lea: 99
+cmovnbe: 5
+cmovb: 5
+jnz: 60
+inc: 75
+jz: 36
+nop: 11
+jmp: 46
+test: 128
+shr: 32
+jb: 23
+and: 47
+imul: 6
+not: 0
+ror: 0
+bsf: 2
+lock: 9
+sar: 1
+int3: 0
+cmovz: 1
+dec: 25
+cmovbe: 0
+js: 1
+cmovnz: 7
+jnbe: 1
+movaps: 2
+xorps: 4
+movups: 2
+movdqa: 0
+movsxd: 5
+neg: 1
+jbe: 2
+bt: 3
+cdqe: 1
+movd: 0
+punpckldq: 0
+paddd: 0
+psrldq: 0
+prefetchw: 1
+adc: 1
+div: 1
+rep: 0
+lfence: 0
+setb: 3
+bts: 2
+sbb: 0
+movsd: 0
+btr: 0
+cmovnb: 1
+jl: 2
+movdqu: 0
+setz: 2
+cmovns: 1
+sti: 0
+movnti: 0
+movntdq: 3
+sfence: 0
+jnl: 0
+cqo: 0
+jle: 0
+xchg: 0
+jnle: 1
+movsx: 0
+cli: 3
+rdtsc: 0
+btc: 0
+bsr: 0
+cmovnl: 0
+setnz: 1
+setnb: 0
+setbe: 0
+jns: 0
+cdq: 0
+setnbe: 0
+rdtscp: 0
+mul: 0
+wrmsr: 0
+swapgs: 0
+cld: 0
+stmxcsr: 0
+ldmxcsr: 1
+clac: 0
+stac: 0
+iretq: 0
+rol: 0
+fiadd: 0
+fstp: 0
+sahf: 0
+idiv: 0
+out: 0
+setl: 1
+cmovnle: 0
+pxor: 0
+rdmsr: 0
+cmovle: 0
+sysret: 0
+iretd: 0
+jnp: 0
+pause: 0
+fcom: 0
+rdrand: 0
+setns: 0
+movq: 0
+pushfq: 1
+cmovl: 0
+fimul: 0
+cmovs: 0
+setle: 0
+bswap: 0
+setnl: 0
+loopne: 0
+syscall: 0
+xsave: 0
+fxsave: 0
+xsaves: 0
+xsaveopt: 0
+fninit: 0
+fxrstor: 0
+xrstors: 0
+xrstor: 0
+
+Instruction Lines Non Zero Count by Arguments:
+push
+-Base Registers: 51
+sub
+-Base Registers with Constant Values: 22
+-Base Registers: 44
+-Base Registers with Memory: 3
+-Memory with constant: 1
+mov
+-Base Registers with Memory: 556
+-Base Registers: 214
+-Base Registers with Constant Values: 76
+-Memory with constant: 17
+cmp
+-Base Registers with Constant Values: 37
+-Base Registers: 90
+-Base Registers with Memory: 52
+-Memory with constant: 22
+jnb
+-Constant Values: 19
+call
+-Constant Values: 18
+-Memory: 9
+-Base Registers: 0
+add
+-Base Registers with Constant Values: 54
+-Base Registers: 22
+-Base Registers with Memory: 11
+-Memory with constant: 6
+pop
+-Base Registers: 19
+ret
+-No Arguments: 19
+-Constant Values: 0
+xor
+-Base Registers: 35
+-Base Registers with Memory: 5
+-Base Registers with Constant Values: 0
+-Memory with constant: 0
+movzx
+-Base Registers with Memory: 106
+-Base Registers: 40
+shl
+-Base Registers with Constant Values: 15
+-Base Registers: 16
+-Memory with constant: 0
+or
+-Base Registers: 9
+-Memory with constant: 0
+-Base Registers with Constant Values: 4
+-Base Registers with Memory: 15
+lea
+-Base Registers with Memory: 99
+cmovnbe
+-Base Registers: 4
+-Base Registers with Memory: 1
+cmovb
+-Base Registers with Memory: 1
+-Base Registers: 4
+jnz
+-Constant Values: 60
+inc
+-Base Registers: 54
+-Memory: 21
+jz
+-Constant Values: 36
+nop
+-Base Registers with Memory: 11
+-No Arguments: 0
+jmp
+-Constant Values: 42
+-Memory: 2
+-Base Registers: 2
+test
+-Base Registers: 104
+-Base Registers with Constant Values: 15
+-Memory with constant: 9
+-Base Registers with Memory: 0
+shr
+-Base Registers with Constant Values: 22
+-Base Registers: 10
+jb
+-Constant Values: 23
+and
+-Base Registers: 13
+-Base Registers with Constant Values: 30
+-Memory with constant: 4
+-Base Registers with Memory: 0
+imul
+-Base Registers: 2
+-Base Registers with Constant Values: 0
+-Base Registers with Memory: 4
+-Memory: 0
+-Other: 0
+not
+-Base Registers: 0
+ror
+-Base Registers: 0
+-Base Registers with Constant Values: 0
+bsf
+-Base Registers: 2
+lock
+-Base Registers with Memory: 7
+-Memory: 0
+-Memory with constant: 2
+sar
+-Base Registers with Constant Values: 1
+-Base Registers: 0
+int3
+-No Arguments: 0
+cmovz
+-Base Registers: 1
+-Base Registers with Memory: 0
+dec
+-Base Registers: 25
+-Memory: 0
+cmovbe
+-Base Registers: 0
+js
+-Constant Values: 1
+cmovnz
+-Base Registers: 7
+-Base Registers with Memory: 0
+jnbe
+-Constant Values: 1
+movaps
+-SIMD Registers with Memory: 2
+xorps
+-SIMD Registers: 4
+movups
+-SIMD Registers with Memory: 2
+movdqa
+-SIMD Registers with Memory: 0
+-SIMD Registers: 0
+movsxd
+-Base Registers: 4
+-Base Registers with Memory: 1
+neg
+-Base Registers: 1
+-Memory: 0
+jbe
+-Constant Values: 2
+bt
+-Base Registers with Constant Values: 2
+-Base Registers: 0
+-Memory with constant: 1
+-Base Registers with Memory: 0
+cdqe
+-No Arguments: 1
+movd
+-SIMD Registers with Memory: 0
+-Other: 0
+punpckldq
+-SIMD Registers: 0
+paddd
+-SIMD Registers: 0
+psrldq
+-SIMD Registers with Constant Values: 0
+prefetchw
+-Memory: 1
+adc
+-Base Registers with Constant Values: 1
+-Base Registers with Memory: 0
+div
+-Memory: 0
+-Base Registers: 1
+rep
+-Memory: 0
+lfence
+-No Arguments: 0
+setb
+-Base Registers: 3
+bts
+-Base Registers with Constant Values: 0
+-Base Registers: 2
+-Memory with constant: 0
+-Base Registers with Memory: 0
+sbb
+-Base Registers: 0
+movsd
+-SIMD Registers with Memory: 0
+btr
+-Base Registers: 0
+-Memory with constant: 0
+-Base Registers with Constant Values: 0
+-Base Registers with Memory: 0
+cmovnb
+-Base Registers: 1
+-Base Registers with Memory: 0
+jl
+-Constant Values: 2
+movdqu
+-SIMD Registers with Memory: 0
+setz
+-Base Registers: 2
+-Memory: 0
+cmovns
+-Base Registers: 1
+sti
+-No Arguments: 0
+movnti
+-Base Registers with Memory: 0
+movntdq
+-SIMD Registers with Memory: 3
+sfence
+-No Arguments: 0
+jnl
+-Constant Values: 0
+cqo
+-No Arguments: 0
+jle
+-Constant Values: 0
+xchg
+-Base Registers with Memory: 0
+-Base Registers: 0
+jnle
+-Constant Values: 1
+movsx
+-Base Registers: 0
+-Base Registers with Memory: 0
+cli
+-No Arguments: 3
+rdtsc
+-No Arguments: 0
+btc
+-Base Registers: 0
+bsr
+-Base Registers: 0
+cmovnl
+-Base Registers: 0
+setnz
+-Base Registers: 1
+-Memory: 0
+setnb
+-Base Registers: 0
+setbe
+-Base Registers: 0
+jns
+-Constant Values: 0
+cdq
+-No Arguments: 0
+setnbe
+-Base Registers: 0
+rdtscp
+-No Arguments: 0
+mul
+-Base Registers: 0
+wrmsr
+-No Arguments: 0
+swapgs
+-No Arguments: 0
+cld
+-No Arguments: 0
+stmxcsr
+-Memory: 0
+ldmxcsr
+-Memory: 1
+clac
+-No Arguments: 0
+stac
+-No Arguments: 0
+iretq
+-No Arguments: 0
+rol
+-Base Registers with Memory: 0
+-Base Registers with Constant Values: 0
+-Memory with constant: 0
+-Base Registers: 0
+fiadd
+-FPU register with Memory: 0
+fstp
+-FPU registers: 0
+sahf
+-No Arguments: 0
+idiv
+-Memory: 0
+-Base Registers: 0
+out
+-Base Registers with Constant Values: 0
+setl
+-Base Registers: 1
+cmovnle
+-Base Registers: 0
+pxor
+-SIMD Registers: 0
+rdmsr
+-No Arguments: 0
+cmovle
+-Base Registers: 0
+sysret
+-No Arguments: 0
+iretd
+-No Arguments: 0
+jnp
+-Constant Values: 0
+pause
+-No Arguments: 0
+fcom
+-FPU registers: 0
+rdrand
+-Base Registers: 0
+setns
+-Base Registers: 0
+-Memory: 0
+movq
+-SIMD Registers with Memory: 0
+-Other: 0
+pushfq
+-No Arguments: 1
+cmovl
+-Base Registers: 0
+fimul
+-FPU register with Memory: 0
+cmovs
+-Base Registers: 0
+setle
+-Base Registers: 0
+bswap
+-Base Registers: 0
+setnl
+-Base Registers: 0
+loopne
+-Constant Values: 0
+syscall
+-No Arguments: 0
+xsave
+-Memory: 0
+fxsave
+-Memory: 0
+xsaves
+-Memory: 0
+xsaveopt
+-Memory: 0
+fninit
+-No Arguments: 0
+fxrstor
+-Memory: 0
+xrstors
+-Memory: 0
+xrstor
+-Memory: 0
